@@ -43,3 +43,5 @@ persist.sys.usb.config=mtp,adb
 ## Limit activities
 sys.mem.max_hidden_apps=5
 
+#git test (angry birds hate terminal)
+ro.makeitgofaster=1
