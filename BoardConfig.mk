@@ -17,7 +17,6 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 NEEDS_ARM_ERRATA_754319_754320 := true
 BOARD_GLOBAL_CFLAGS += -DNEEDS_ARM_ERRATA_754319_754320
 
-#BOARD_CUSTOM_BOOTIMG_MK := device/common/uboot-bootimg.mk
 BOARD_USES_UBOOT_MULTIIMAGE := true
 BOARD_UBOOT_ENTRY := 0x80008000
 BOARD_UBOOT_LOAD := 0x80008000
@@ -25,8 +24,6 @@ BOARD_UBOOT_LOAD := 0x80008000
 # Try to build the kernel
 TARGET_KERNEL_CONFIG := cyanogenmod_p920_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/omap4-common
-# Keep this as a fallback
-#TARGET_PREBUILT_KERNEL := device/lge/p920/kernel
 
 KERNEL_WL12XX_MODULES:
 	make -C hardware/ti/wlan/mac80211/compat_wl12xx/ KLIB_BUILD=$(KERNEL_OUT) ARCH="arm" $(ARM_CROSS_COMPILE) KERNEL_CROSS_COMPILE=$(ARM_CROSS_COMPILE)
@@ -49,9 +46,6 @@ TARGET_KERNEL_MODULES := KERNEL_SGX_MODULES KERNEL_WL12XX_MODULES
 ## Ignore --wipe_data sent by the bootloader
 BOARD_RECOVERY_ALWAYS_WIPES := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-
-# Use this flag if the board has a ext4 partition larger than 2gb
-#BOARD_HAS_LARGE_FILESYSTEM := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_WPAN_DEVICE := true
@@ -92,9 +86,6 @@ endif
 BOARD_USES_TI_CAMERA_HAL := true
 TI_OMAP4_CAMERAHAL_VARIANT := DONOTBUILDIT
 HARDWARE_OMX := true
-#FW3A := true
-#ICAP := true
-#IMAGE_PROCESSING_PIPELINE := true
 ifdef HARDWARE_OMX
 OMX_VENDOR := ti
 OMX_VENDOR_WRAPPER := TI_OMX_Wrapper
@@ -111,7 +102,6 @@ USE_OPENGL_RENDERER := true
 BOARD_TOUCH_RECOVERY := true
 BOARD_CUSTOM_BOOTIMG_MK := device/lge/p920/uboot-bootimg.mk
 ENHANCED_DOMX := true
-
 
 BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/p920/vibrator.c
 
